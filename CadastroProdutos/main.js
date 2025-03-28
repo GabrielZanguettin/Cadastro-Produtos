@@ -5,6 +5,9 @@ const submitBtn = document.querySelector("#submit-button");
 const toastContainer = document.querySelector("#toast-container");
 const form = document.querySelector("#products-form");
 
+/* tf.setBackend('cpu'); */
+
+
 async function uploadImage(file) {
     // FormData -> Formato que permite enviar arquivos em requisições HTTP
     const formData = new FormData();
@@ -32,6 +35,12 @@ function showToast() {
     setTimeout(() => toastContainer.removeChild(span), 3000);
 }
 
+async function extractEmbeddings(imageElement) {
+    const model = await mobilenet.load();
+    const embeddings = await model.infer(imageElement, true); 
+    return embeddings.array();
+}
+
 
 async function showPreviewImage(file) {
     const reader = new FileReader();
@@ -44,10 +53,17 @@ async function showPreviewImage(file) {
     }
 }
 
+let embeddings = [];
+
 document.querySelector("#fileInput").addEventListener("change", async (e) => {
     const file = e.target.files[0];
     if (file) {
         showPreviewImage(file);
+        /* image.onload = async () => {
+            embeddings = await extractEmbeddings(image);
+            const str = embeddings.join(",");
+            console.log(str);
+        }; */
         /* const fileName = file.name;
         const nameEdited = fileName.slice(0, fileName.lastIndexOf("."));
         nameInput.value = nameEdited; */
@@ -66,3 +82,20 @@ window.addEventListener("DOMContentLoaded", () => {
         sessionStorage.removeItem("formEnviado");
     }
 });
+
+const json = [
+    {
+        "nome": "Saco de Arroz",
+        "barcode": "583217490856",
+        "base64": "NTgzMjE3NDkwODU2",
+        "embeddings": "0.0783122330904007,0.6533994674682617,5.0030131340026855,0.3611036241054535"
+    },
+    {
+        "nome": "Creme de leite",
+        "barcode": "783447092891",
+        "base64": "NHgxMrG8NDliODU9",
+        "embeddings": "0.0783122330904007,0.6533994674682617,5.0030131340026855,0.3611036241054535"
+    }
+]
+
+console.log(json);
