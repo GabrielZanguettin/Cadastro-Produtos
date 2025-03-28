@@ -1,0 +1,6 @@
+@FinderAPI_HostAddress = http://localhost:5124
+
+GET {{FinderAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

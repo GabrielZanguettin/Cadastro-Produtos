@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "FinderAPI.Controllers.ProdutoController",
+    "Method": "RegistrarProdutos",
+    "RelativePath": "api/produto",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "produtos",
+        "Type": "System.Collections.Generic.List\u00601[[FinderAPI.Entidades.Produto, FinderAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

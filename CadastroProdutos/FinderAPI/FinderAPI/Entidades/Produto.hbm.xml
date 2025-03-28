@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FinderAPI" namespace="FinderAPI.Entidades">
+	<class name="Produto" table="produto">
+		<id name="Id" column="Id">
+			<generator class="native"/>
+		</id>
+		<property name="Nome" column="Nome"/>
+		<property name="Barcode" column="Barcode"/>
+		<property name="Base64" column="Base64"/>
+		<property name="Embeddings" column="Embeddings"/>
+	</class>
+</hibernate-mapping>
