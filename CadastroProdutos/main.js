@@ -1,12 +1,24 @@
 const image = document.querySelector("#image");
 const divPreview = document.querySelector("#preview");
 const nameInput = document.querySelector("#name-input");
+const categoryInput = document.querySelector("#category-input");
+const discountInput = document.querySelector("#discount-input");
+const priceInput = document.querySelector("#price-input");
+const linkInput = document.querySelector("#link-input");
 const submitBtn = document.querySelector("#submit-button");
 const toastContainer = document.querySelector("#toast-container");
 const form = document.querySelector("#products-form");
 
-/* tf.setBackend('cpu'); */
-
+const discounts = {
+    Bebida: 0.05,
+    Alimento: 0.10,
+    Frios: 0.07,
+    Carne: 0.08,
+    Doce: 0.06,
+    Limpeza: 0.03,
+    Higiene: 0.04,
+    Eletrodoméstico: 0.12
+};
 
 async function uploadImage(file) {
     // FormData -> Formato que permite enviar arquivos em requisições HTTP
@@ -17,11 +29,39 @@ async function uploadImage(file) {
 
     try {
         const response = await axios.post(`https://api.imgbb.com/1/upload?key=${chave_api}`, formData);
-        return response.data.data.url;
+        linkInput.value = response.data.data.url;
     } catch (error) {
         console.error(error);
     }
 };
+
+async function registerProduct() {
+    try {
+        const response = await axios.post( , {
+            Nome: nameInput.value,
+            Categoria: categoryInput.value,
+            Promocao: discountInput.value,
+            Valor: priceInput.value,
+            ValorPromocional:  priceInput.value - priceInput.value * discounts[categoryInput.value],
+            Link: linkInput.value
+        })
+    }
+}
+
+async function showPreviewImage(file) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = async function (e) {
+        const base64 = e.target.result;
+        image.src = base64;
+        divPreview.style.backgroundImage = `url('${image.src}')`;
+        divPreview.style.backgroundSize = "cover";
+        divPreview.style.backgroundPosition = "center";
+        /* const response = await axios.post(`https://localhost:7223/api/produto/base64`, {
+            Valor: base64
+        }); */
+    }
+}
 
 function showToast() {
     toastContainer.innerHTML = "";
@@ -35,40 +75,37 @@ function showToast() {
     setTimeout(() => toastContainer.removeChild(span), 3000);
 }
 
-async function extractEmbeddings(imageElement) {
-    const model = await mobilenet.load();
-    const embeddings = await model.infer(imageElement, true); 
-    return embeddings.array();
-}
-
-
-async function showPreviewImage(file) {
+/* async function showPreviewImage2(file) {
     const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function (e) {
-        image.src = e.target.result;
+    reader.readAsArrayBuffer(file);
+    reader.onload = async function (e) {
+        const arrayBuffer = e.target.result;
+        const byteArray = new Uint8Array(arrayBuffer); // Transformar o ArrayBuffer em Uint8Array
+        console.log(`Valor binário da imagem: ${byteArray}`);
+        image.src = base64;
         divPreview.style.backgroundImage = `url('${image.src}')`;
         divPreview.style.backgroundSize = "cover";
         divPreview.style.backgroundPosition = "center";
+        const response = await axios.post(`https://localhost:7223/api/produto/base64`, {
+            Valor: base64
+        });
     }
-}
+} */
 
-let embeddings = [];
+/* categoryInput.addEventListener("change", () => {
+    const desconto = discounts[categoryInput.value];
+    const productValue = priceInput.value - priceInput.value * desconto;
+}) */
+
+submitBtn.addEventListener("click", () => {
+    registerProduct();
+})
 
 document.querySelector("#fileInput").addEventListener("change", async (e) => {
     const file = e.target.files[0];
     if (file) {
+        const imageUrl = await uploadImage(file);
         showPreviewImage(file);
-        /* image.onload = async () => {
-            embeddings = await extractEmbeddings(image);
-            const str = embeddings.join(",");
-            console.log(str);
-        }; */
-        /* const fileName = file.name;
-        const nameEdited = fileName.slice(0, fileName.lastIndexOf("."));
-        nameInput.value = nameEdited; */
-        /* const imageUrl = await uploadImage(file);
-        console.log("URL da imagem:", imageUrl); */
     }
 });
 
@@ -82,20 +119,3 @@ window.addEventListener("DOMContentLoaded", () => {
         sessionStorage.removeItem("formEnviado");
     }
 });
-
-const json = [
-    {
-        "nome": "Saco de Arroz",
-        "barcode": "583217490856",
-        "base64": "NTgzMjE3NDkwODU2",
-        "embeddings": "0.0783122330904007,0.6533994674682617,5.0030131340026855,0.3611036241054535"
-    },
-    {
-        "nome": "Creme de leite",
-        "barcode": "783447092891",
-        "base64": "NHgxMrG8NDliODU9",
-        "embeddings": "0.0783122330904007,0.6533994674682617,5.0030131340026855,0.3611036241054535"
-    }
-]
-
-console.log(json);

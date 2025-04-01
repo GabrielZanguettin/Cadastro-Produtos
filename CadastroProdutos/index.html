@@ -12,10 +12,8 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
-    <script src="main.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="main.js" defer></script>
 </head>
 <body>
     <main>
@@ -27,20 +25,36 @@
                 <h2>Cadastro de produtos</h2>
                 <div id="border"></div>
                 <div class="entryarea">
-                    <input type="text" id="name-input" class="animated-input" required>
-                    <div class="labelline">Nome do produto</div>
-                </div>
-                <div class="entryarea">
-                    <input type="text" class="animated-input" required>
-                    <div class="labelline">Descrição do produto</div>
+                    <input type="text" id="name-input"class="animated-input" required>
+                    <div class="labelline">Nome</div>
                 </div>
                 <div id="select-control">
                     <label for="category">Categoria</label>
                     <select name="category" id="category-input">
-                        <option value="A">Bebida</option>
-                        <option value="B">Alimento</option>
-                        <option value="C">Eletrodoméstico</option>
+                        <option value="Bebida">Bebida</option>
+                        <option value="Alimento">Alimento</option>
+                        <option value="Frios">Frios</option>
+                        <option value="Carne">Carne</option>
+                        <option value="Doce">Doce</option>
+                        <option value="Limpeza">Limpeza</option>
+                        <option value="Higiene">Higiene</option>
+                        <option value="Eletrodoméstico">Eletrodoméstico</option>
                     </select>
+                </div>
+                <div id="select-control">
+                    <label for="discount">Promoção?</label>
+                    <select name="discount" id="discount-input">
+                        <option value="False">Não</option>
+                        <option value="True">Sim</option>
+                    </select>
+                </div>
+                <div class="entryarea">
+                    <input type="text" id="price-input" class="animated-input" required>
+                    <div class="labelline">Valor base</div>
+                </div>
+                <div class="entryarea">
+                    <input type="text" id="link-input" class="animated-input" required>
+                    <div class="labelline">Link da imagem</div>
                 </div>
                 <div id="submit-image-button">
                     <label id="image-button" for="image"><i class="bi bi-upload"></i>Envie sua imagem</label>

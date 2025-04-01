@@ -41,7 +41,7 @@ main {
 
 #logo {
     position: absolute;
-    top: -150px;
+    top: -105px;
     left: 85px;
 }
 
@@ -130,11 +130,18 @@ i {
     height: 3rem;
     cursor: pointer
 }
+
+#select-control {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
  
 #select-control select {
     padding: 10px;
     outline: none;
     margin-bottom: 1rem;
+    width: 170px;
 }
 
 
