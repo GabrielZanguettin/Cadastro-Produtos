@@ -16,6 +16,14 @@
     <script src="main.js" defer></script>
 </head>
 <body>
+    <header>
+        <nav>
+            <ul id="navbar">
+                <li id="home-btn"><i class="bi bi-house-door"></i>Home</li>
+                <li id="products-btn"><i class="bi bi-cart"></i>Produtos</li>
+            </ul>
+        </nav>
+    </header>
     <main>
         <div id="products-container">
             <div id="logo">
@@ -28,25 +36,22 @@
                     <input type="text" id="name-input"class="animated-input" required>
                     <div class="labelline">Nome</div>
                 </div>
-                <div id="select-control">
-                    <label for="category">Categoria</label>
-                    <select name="category" id="category-input">
-                        <option value="Bebida">Bebida</option>
-                        <option value="Alimento">Alimento</option>
-                        <option value="Frios">Frios</option>
-                        <option value="Carne">Carne</option>
-                        <option value="Doce">Doce</option>
-                        <option value="Limpeza">Limpeza</option>
-                        <option value="Higiene">Higiene</option>
-                        <option value="Eletrodoméstico">Eletrodoméstico</option>
-                    </select>
-                </div>
-                <div id="select-control">
-                    <label for="discount">Promoção?</label>
-                    <select name="discount" id="discount-input">
-                        <option value="False">Não</option>
-                        <option value="True">Sim</option>
-                    </select>
+                <div class="entryarea">
+                    <input type="text" id="category-input" class="animated-input" required>
+                    <div class="labelline">Categoria</div>
+                    <div id="available-categories">
+                        <h4>Categorias válidas:</h4>
+                        <ul id="categories">
+                            <li>1. Bebida</li>
+                            <li>2. Alimento</li>
+                            <li>3. Frios</li>
+                            <li>4. Carne</li>
+                            <li>5. Doce</li>
+                            <li>6. Limpeza</li>
+                            <li>7. Higiene</li>
+                            <li>8. Eletrodoméstico</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="entryarea">
                     <input type="text" id="price-input" class="animated-input" required>
@@ -55,6 +60,10 @@
                 <div class="entryarea">
                     <input type="text" id="link-input" class="animated-input" required>
                     <div class="labelline">Link da imagem</div>
+                </div>
+                <div id="select-control">
+                    <label for="discount">O produto está em promoção?</label>
+                    <input type="checkbox" name="discount" id="discount-input">
                 </div>
                 <div id="submit-image-button">
                     <label id="image-button" for="image"><i class="bi bi-upload"></i>Envie sua imagem</label>
@@ -68,6 +77,9 @@
             <div id="preview">
                 <img id="image" src="" alt="">
             </div>
+        </div>
+        <div id="products-list-container">
+            <h2>Lista de Produtos</h2>
         </div>
     </main>
     <div id="toast-container">

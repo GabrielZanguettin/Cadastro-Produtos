@@ -8,10 +8,13 @@ namespace FinderAPI.Entidades
         [Required]
         public string Nome { get; set; }
         [Required]
-        public string Barcode { get; set; }
+        public string Categoria { get; set; }
         [Required]
-        public string Base64 { get; set; }
+        public bool Promocao { get; set; }
         [Required]
-        public string Embeddings { get; set; }
+        public float Valor { get; set; }
+        public float Valor_Promocional { get; set; }
+        [Required]
+        public string Link {get; set;}
     }
 }

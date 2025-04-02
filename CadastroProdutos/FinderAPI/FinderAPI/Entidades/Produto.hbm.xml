@@ -5,8 +5,10 @@
 			<generator class="native"/>
 		</id>
 		<property name="Nome" column="Nome"/>
-		<property name="Barcode" column="Barcode"/>
-		<property name="Base64" column="Base64"/>
-		<property name="Embeddings" column="Embeddings"/>
+		<property name="Categoria" column="Categoria"/>
+		<property name="Promocao" column="Promoção"/>
+		<property name="Valor" column="Valor"/>
+		<property name="Valor_Promocional" column="ValorPromocional"/>
+		<property name="Link" column="Link"/>
 	</class>
 </hibernate-mapping>

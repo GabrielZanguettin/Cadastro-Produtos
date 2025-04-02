@@ -7,11 +7,27 @@
 
 body {
     background-color: #002861;
+}
+
+ul {
+    list-style: none;
+}
+
+#navbar li {
+    padding: 5px 20px;
+    cursor: pointer;
+    font-size: 15px;
+    background-color: #222222;
+    color: #FFFFFF;
+}
+
+#navbar {
     display: flex;
-    min-height: 100vh;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
-    flex-direction: column;
+    padding: 0 1rem;
+    gap: 2rem;
+    height: 67px;
 }
 
 main {
@@ -25,6 +41,7 @@ main {
     -webkit-box-shadow: -1px 10px 40px 12px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 10px 40px 12px rgba(0,0,0,0.75);
     box-shadow: -1px 10px 40px 12px rgba(0,0,0,0.75);
+    margin: 1.5rem auto;
 }
 
 #products-container,
@@ -80,7 +97,6 @@ i {
     background-color: #3BB77E;
     color: #FFFFFF;
     text-align: center;
-    transition: 0.4s;
 }
 
 .entryarea {
@@ -123,6 +139,36 @@ i {
     z-index: 1111;
 }
 
+#available-categories {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    position: absolute;
+    z-index: 11;
+    background-color: #FFFFFF;
+    width: 100%;
+    border: 2px solid #43A0D6;
+    padding: 10px;
+    top: -60px;
+    left: 282px;
+    pointer-events: none;
+}
+
+#available-categories h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: #43A0D6;
+}
+
+#available-categories ul {
+    font-size: 13px;
+}
+
+#category-input:focus + .labelline + #available-categories {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 #fileInput {
     position: absolute;
     opacity: 0;
@@ -135,21 +181,34 @@ i {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-}
- 
-#select-control select {
-    padding: 10px;
-    outline: none;
     margin-bottom: 1rem;
-    width: 170px;
 }
 
+#discount-input {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000000;
+    cursor: pointer;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#discount-input:checked::before {
+    position: absolute;
+    right: -7px;
+    bottom: 110px;
+    content: '✔';
+    font-size: 33px;
+    color: orange;
+    font-weight: bold;
+}
 
 #select-control label {
-    margin-bottom: 0.6rem;
     font-size: 0.9rem;
 }
-
 
 #submit-button {
     display: flex;
@@ -208,4 +267,8 @@ i {
 .transitioned {
     opacity: 1;
     transform: translateY(0);
+}
+
+#products-list-container {
+    display: none;
 }

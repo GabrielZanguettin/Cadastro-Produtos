@@ -17,6 +17,11 @@ builder.Services.AddSingleton<ISessionFactory>((s) =>
     return sessionFactory;
 });
 builder.Services.AddTransient<ProdutoService>();
+builder.Services.AddCors(
+    b => b.AddDefaultPolicy(c =>
+        c.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin()
+    )
+);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,5 +36,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors();
 
 app.Run();
