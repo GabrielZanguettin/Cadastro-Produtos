@@ -17,19 +17,50 @@
 </head>
 <body>
     <header>
-        <nav>
+        <nav class="side-menu">
+            <div class="list-btn">
+                <i class="bi bi-list"></i>
+            </div>
             <ul id="navbar">
-                <li id="home-btn"><i class="bi bi-house-door"></i>Home</li>
-                <li id="products-btn"><i class="bi bi-cart"></i>Produtos</li>
+                <li id="home-btn">
+                    <div class="icons">
+                        <i class="bi bi-house-door"></i>
+                        <span>Home</span>
+                    </div>
+                </li>
+                <li id="products-btn">
+                    <div class="icons">
+                        <i class="bi bi-cart"></i>
+                        <span>Produtos</span>
+                    </div>
+                </li>
+                <li id="login-btn">
+                    <div class="icons">
+                        <i class="bi bi-person-circle"></i>
+                        <span>Login</span>
+                    </div>
+                </li> 
+                <li id="shopping-cart-btn">
+                    <div class="icons">
+                        <i class="bi bi-cart4"></i>
+                        <span>Carrinho</span>
+                    </div>
+                </li>
+                <li id="register-btn">
+                    <div class="icons">
+                        <i class="bi bi-person-add""></i>
+                        <span>Criar conta</span>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
-    <main>
+    <main id="main">
         <div id="products-container">
             <div id="logo">
                 <img id="trayfinder" src="/img/TrayFinder.png" alt="">
             </div>
-            <form id="products-form">
+            <form id="products-form" autocomplete="off">
                 <h2>Cadastro de produtos</h2>
                 <div id="border"></div>
                 <div class="entryarea">
@@ -79,7 +110,26 @@
             </div>
         </div>
         <div id="products-list-container">
-            <h2>Lista de Produtos</h2>
+            <h2 id="title">Não há produtos cadastrados</h2>
+            <div class="products"></div>
+        </div>
+        <div id="login-container">
+            <form id="login-form" autocomplete="off">
+                <h2>Login</h2>
+                <div id="border"></div>
+                <div class="entryarea">
+                    <input type="text" id="email-input"class="animated-input" required>
+                    <div class="labelline">Email</div>
+                </div>
+                <div class="entryarea">
+                    <input type="password" id="password-input" class="animated-input" required>
+                    <div class="labelline">Senha</div>
+                </div>
+                <button id="login-button">Entrar</button>
+                <div id="no-account">
+                    Não tem uma conta? <span id="no-account-btn">Clique aqui</span>
+                </div>
+            </form>
         </div>
     </main>
     <div id="toast-container">
