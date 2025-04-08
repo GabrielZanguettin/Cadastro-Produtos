@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +12,12 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/src/main.js" defer></script>
+    <script type="module" src="/src/main.js" defer></script>
 </head>
+
 <body>
     <header>
         <nav class="side-menu">
@@ -22,7 +25,7 @@
                 <i class="bi bi-list"></i>
             </div>
             <ul id="navbar">
-                <li id="home-btn">
+                <li id="home-btn" class="active">
                     <div class="icons">
                         <i class="bi bi-house-door"></i>
                         <span>Home</span>
@@ -39,11 +42,12 @@
                         <i class="bi bi-person-circle"></i>
                         <span>Login</span>
                     </div>
-                </li> 
+                </li>
                 <li id="shopping-cart-btn">
                     <div class="icons">
                         <i class="bi bi-cart4"></i>
                         <span>Carrinho</span>
+                        <span id="len-cart">0</span>
                     </div>
                 </li>
                 <li id="register-btn">
@@ -55,84 +59,173 @@
             </ul>
         </nav>
     </header>
-    <main id="main">
-        <div id="products-container">
-            <div id="logo">
-                <img id="trayfinder" src="/img/TrayFinder.png" alt="">
+    <main id=" main">
+    <div id="register-products-container">
+        <form id="products-form" autocomplete="off">
+            <h2>Cadastro de produtos</h2>
+            <div id="border"></div>
+            <div class="entryarea">
+                <input type="text" id="name-input" class="animated-input" required>
+                <div class="labelline">Nome</div>
             </div>
-            <form id="products-form" autocomplete="off">
-                <h2>Cadastro de produtos</h2>
-                <div id="border"></div>
-                <div class="entryarea">
-                    <input type="text" id="name-input"class="animated-input" required>
-                    <div class="labelline">Nome</div>
+            <div class="entryarea">
+                <input type="text" id="category-input" class="animated-input" required>
+                <div class="labelline">Categoria</div>
+                <div id="available-categories">
+                    <h4>Categorias válidas:</h4>
+                    <ul id="categories">
+                        <li>1. Bebida</li>
+                        <li>2. Alimento</li>
+                        <li>3. Frios</li>
+                        <li>4. Carne</li>
+                        <li>5. Doce</li>
+                        <li>6. Limpeza</li>
+                        <li>7. Higiene</li>
+                        <li>8. Eletrodoméstico</li>
+                    </ul>
                 </div>
-                <div class="entryarea">
-                    <input type="text" id="category-input" class="animated-input" required>
-                    <div class="labelline">Categoria</div>
-                    <div id="available-categories">
-                        <h4>Categorias válidas:</h4>
-                        <ul id="categories">
-                            <li>1. Bebida</li>
-                            <li>2. Alimento</li>
-                            <li>3. Frios</li>
-                            <li>4. Carne</li>
-                            <li>5. Doce</li>
-                            <li>6. Limpeza</li>
-                            <li>7. Higiene</li>
-                            <li>8. Eletrodoméstico</li>
-                        </ul>
+            </div>
+            <div class="entryarea">
+                <input type="text" id="price-input" class="animated-input" required>
+                <div class="labelline">Valor</div>
+            </div>
+            <div class="entryarea">
+                <input type="text" id="link-input" class="animated-input" required>
+                <div class="labelline">Link imagem</div>
+            </div>
+            <div id="select-control">
+                <label for="discount">O produto está em promoção?</label>
+                <input type="checkbox" name="discount" id="discount-input">
+            </div>
+            <div id="submit-image-button">
+                <label id="image-button" for="image"><i class="bi bi-upload"></i>Envie sua
+                    imagem</label>
+                <input type="file" id="fileInput" name="image" accept="image/*" required>
+            </div>
+            <button id="submit-button">Cadastrar</button>
+        </form>
+    </div>
+    <div id="preview-image-container">
+        <h2>Preview:</h2>
+        <div id="preview">
+            <img id="image" src="" alt="">
+        </div>
+    </div>
+    <div id="product-container">
+    </div>
+    <div id="products-list-container">
+        <h2 class="title">Produtos</h2>
+        <div class="products"></div>
+        <div class="next-page">
+        </div>
+    </div>
+    <div id="login-container">
+        <form id="login-form" autocomplete="off">
+            <h2>Login</h2>
+            <div id="border"></div>
+            <div class="entryarea">
+                <input type="text" id="email-input" class="animated-input" required>
+                <div class="labelline">Email</div>
+            </div>
+            <div class="entryarea">
+                <input type="password" id="password-input" class="animated-input" required>
+                <div class="labelline">Senha</div>
+            </div>
+            <button id="login-button">Entrar</button>
+            <div id="no-account">
+                Não tem uma conta? <span id="no-account-btn">Clique aqui</span>
+            </div>
+        </form>
+    </div>
+    <div id="register-container">
+        <form id="register-form" autocomplete="off">
+            <h2>Crie sua conta</h2>
+            <div id="border"></div>
+            <div class="entryarea">
+                <input type="text" id="register-name-input" class="animated-input" required>
+                <div class="labelline">Nome</div>
+            </div>
+            <div class="entryarea">
+                <input type="text" id="register-email-input" class="animated-input" required>
+                <div class="labelline">Email</div>
+            </div>
+            <div class="entryarea">
+                <input type="password" id="register-password-input" class="animated-input"
+                    required>
+                <div class="labelline">Senha</div>
+            </div>
+            <div class="entryarea">
+                <input type="password" id="confirmed-password-input" class="animated-input"
+                    required>
+                <div class="labelline">Confirme a senha</div>
+            </div>
+            <button id="sign-up-button">Criar conta</button>
+        </form>
+    </div>
+    <div id="cart-container">
+        <h2 class="title-cart">Não há produtos no carrinho.</h2>
+        <div class="side-menu-checkout">
+            <div class="open-checkout">
+                <i class="bi bi-arrow-up-circle"></i>
+                <div class="products-checkout">
+                    <div>
+                        <h3 id="total-to-pay">Total a pagar:</h3>
+                        <h3 id="price-to-pay">R$0.00</h3>
+                    </div>
+                    <div id="checkout-button-div">
+                        <button id="checkout-button"><i class="bi bi-lock"></i>Checkout</button>
                     </div>
                 </div>
-                <div class="entryarea">
-                    <input type="text" id="price-input" class="animated-input" required>
-                    <div class="labelline">Valor base</div>
-                </div>
-                <div class="entryarea">
-                    <input type="text" id="link-input" class="animated-input" required>
-                    <div class="labelline">Link da imagem</div>
-                </div>
-                <div id="select-control">
-                    <label for="discount">O produto está em promoção?</label>
-                    <input type="checkbox" name="discount" id="discount-input">
-                </div>
-                <div id="submit-image-button">
-                    <label id="image-button" for="image"><i class="bi bi-upload"></i>Envie sua imagem</label>
-                    <input type="file" id="fileInput" name="image" accept="image/*" required>
-                </div>
-                <button id="submit-button">Cadastrar</button>
-            </form>
-        </div>
-        <div id="preview-image-container">
-            <h2>Preview:</h2>
-            <div id="preview">
-                <img id="image" src="" alt="">
             </div>
         </div>
-        <div id="products-list-container">
-            <h2 id="title">Não há produtos cadastrados</h2>
-            <div class="products"></div>
+        <div class="products-cart">
         </div>
-        <div id="login-container">
-            <form id="login-form" autocomplete="off">
-                <h2>Login</h2>
-                <div id="border"></div>
-                <div class="entryarea">
-                    <input type="text" id="email-input"class="animated-input" required>
-                    <div class="labelline">Email</div>
-                </div>
-                <div class="entryarea">
-                    <input type="password" id="password-input" class="animated-input" required>
-                    <div class="labelline">Senha</div>
-                </div>
-                <button id="login-button">Entrar</button>
-                <div id="no-account">
-                    Não tem uma conta? <span id="no-account-btn">Clique aqui</span>
-                </div>
-            </form>
+    </div>
+    <div id="edit-product-container">
+        <h2 class="title">Edição de produtos</h2>
+        <div id="border"></div>
+        <form id="edit-form" autocomplete="off">
+            <div class="entryarea">
+                <input type="text" id="edit-input" class="animated-input" required>
+                <div class="labelline">Quantidade</div>
+            </div>
+            <button id="edit-button">Confirmar edição</button>
+        </form>
+    </div>
+    <div id="checkout-container">
+        <div id="payment-methods">
+            <h2>Formas de pagamento</h2>
+            <label class="payment-option">
+                <input type="radio" id="pix-input" value="pix" name="payment-method">
+                <span><i class="fa-brands fa-pix"></i>Pix</span>
+            </label>
+            <label class="payment-option">
+                <input type="radio" id="your-balance-input" value="your-balance" name="payment-method">
+                <span><i class="fa-solid fa-sack-dollar"></i>Saldo da conta</span>
+            </label>
+            <label class="payment-option">
+                <input type="radio" id="credit-card-input" value="credit-card" name="payment-method">
+                <span><i class="fa-solid fa-credit-card"></i>Cartão de crédito</span>
+            </label>
+            <label class="payment-option">
+                <input type="radio" id="debit-card-input" value="debit-card" name="payment-method">
+                <span><i class="fa-regular fa-credit-card"></i>Cartão de débito</span>
+            </label>
         </div>
+        <div id="payment-sumary">
+            <div id="prices">
+                <h3>Valor a pagar: R$20.00</h3>
+                <div id="div-saldo">
+                    <h2>Saldo: *****</h2>
+                    <i class="bi bi-eye-slash-fill"></i>
+                </div>
+            </div>
+            <button id="pay-button">Pagar</button>
+        </div>
+    </div>
     </main>
     <div id="toast-container">
     </div>
 </body>
+
 </html>

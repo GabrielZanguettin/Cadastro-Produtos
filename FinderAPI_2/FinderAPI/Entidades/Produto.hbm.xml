@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="FinderAPI" namespace="FinderAPI.Entidades">
+	<class name="Produto" table="produto">
+		<id name="Id" column="Id">
+			<generator class="native"/>
+		</id>
+		<property name="Nome" column="Nome"/>
+		<property name="Categoria" column="Categoria"/>
+		<property name="Promocao" column="Promoção"/>
+		<property name="Valor" column="Valor"/>
+		<property name="Valor_Promocional" column="ValorPromocional"/>
+		<property name="Link" column="Link"/>
+	</class>
+</hibernate-mapping>
