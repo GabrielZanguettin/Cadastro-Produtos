@@ -1,0 +1,65 @@
+[
+  {
+    "ContainingType": "FinderAPI.Controllers.ProdutoController",
+    "Method": "RegistrarProduto",
+    "RelativePath": "api/produto",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "produto",
+        "Type": "FinderAPI.Entidades.Produto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinderAPI.Controllers.ProdutoController",
+    "Method": "GetProdutosDoBanco",
+    "RelativePath": "api/produtos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinderAPI.Controllers.ProdutoController",
+    "Method": "RegistrarProdutos",
+    "RelativePath": "api/produtos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "produtos",
+        "Type": "System.Collections.Generic.List\u00601[[FinderAPI.Entidades.Produto, FinderAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FinderAPI.Controllers.ProdutoController",
+    "Method": "GetCountProdutos",
+    "RelativePath": "api/produtos/count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

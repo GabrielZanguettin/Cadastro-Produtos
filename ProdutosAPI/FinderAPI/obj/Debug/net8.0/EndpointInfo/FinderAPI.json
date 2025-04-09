@@ -1,0 +1,164 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "FinderAPI",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/produtos/count": {
+      "get": {
+        "tags": [
+          "Produto"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/produtos": {
+      "get": {
+        "tags": [
+          "Produto"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Produto"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Produto"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Produto"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Produto"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/produto": {
+      "post": {
+        "tags": [
+          "Produto"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Produto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Produto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Produto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Produto": {
+        "required": [
+          "categoria",
+          "link",
+          "nome",
+          "promocao",
+          "valor"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nome": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "categoria": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "promocao": {
+            "type": "boolean"
+          },
+          "valor": {
+            "type": "number",
+            "format": "float"
+          },
+          "valor_Promocional": {
+            "type": "number",
+            "format": "float"
+          },
+          "link": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
